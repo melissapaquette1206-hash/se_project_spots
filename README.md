@@ -29,7 +29,7 @@ This project is made so all the elements are displayed correctly on popular scre
 
 **Deployed Project on GitHub Pages**
 
-- This webpage is deployed to GitHub Pages : ()
+- This webpage is deployed to GitHub Pages : (https://melissapaquette1206-hash.github.io/se_project_spots/)
 
 **Project Pitch Video**
 
