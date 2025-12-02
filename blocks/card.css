@@ -8,6 +8,7 @@
   object-fit: cover;
   display: block;
   border-radius: 8px;
+  margin-bottom: 12px;
 }
 
 .card__content {
@@ -17,7 +18,7 @@
 }
 
 .card__title {
-  font-family: Poppins;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 1;
@@ -26,6 +27,8 @@
   white-space: nowrap;
   overflow: hidden;
   max-width: 353px;
+  margin: 0;
+  line-height: 1.2;
 }
 
 .card__like-button {
@@ -53,5 +56,6 @@
   .card__title {
     max-width: 235px;
     font-size: 16px;
+    line-height: 1;
   }
 }
