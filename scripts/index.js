@@ -17,7 +17,7 @@ const newPostCloseButton = newPostModal.querySelector(".modal__close-button");
 const newPostForm = newPostModal.querySelector(".modal__form");
 const newPostImageInput = newPostModal.querySelector("#card-image-input");
 const newPostImageCaptionInput = newPostModal.querySelector(
-  "#image-caption-input"
+  "#card-caption-input"
 );
 
 const profileNameElement = document.querySelector(".profile__name");
@@ -26,40 +26,51 @@ const profileDescriptionElement = document.querySelector(
 );
 
 const newPostImageElement = document.querySelector(".card__image");
-const newPostCaptionElement = document.querySelector(".card__title");
+const newPostImageCaptionElement = document.querySelector(".card__title");
+
+function openModal(modal) {
+  modal.classList.add("modal_is-open");
+}
+
+function closeModal(modal) {
+  modal.classList.remove("modal_is-open");
+}
 
 editProfileButton.addEventListener("click", function () {
   editProfileNameInput.value = profileNameElement.textContent;
   editProfileDescriptionInput.value = profileDescriptionElement.textContent;
-  editProfileModal.classList.add("modal_is-opened");
+  openModal(editProfileModal);
 });
 
 editProfileCloseButton.addEventListener("click", function () {
-  editProfileModal.classList.remove("modal_is-opened");
+  closeModal(editProfileModal);
 });
 
 newPostButton.addEventListener("click", function () {
-  newPostModal.classList.add("modal_is-opened");
+  openModal(editProfileModal);
 });
 
 newPostCloseButton.addEventListener("click", function () {
-  newPostModal.classList.remove("modal_is-opened");
+  closeModal(editProfileModal);
 });
 
 function handleEditProfileSubmit(evt) {
   evt.preventDefault();
   profileNameElement.textContent = editProfileNameInput.value;
   profileDescriptionElement.textContent = editProfileDescriptionInput.value;
-  editProfileModal.classList.remove("modal_is-opened");
+  closeModal(editProfileModal);
 }
 
 editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
 function handleNewPostSubmit(evt) {
   evt.preventDefault();
-  newPostImageElement.textContent = newPostImageInput.value;
-  newPostCaptionElement.textContent = newPostImageCaptionInput.value;
-  newPostModal.classList.remove("modal_is-opened");
+  console.log(
+    "New post data:",
+    newPostImageInput.value,
+    newPostImageCaptionInput.value
+  );
+  closeModal(editProfileModal);
 
   newPostForm.addEventListener("submit", handleNewPostSubmit);
 }
