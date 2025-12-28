@@ -47,11 +47,11 @@ editProfileCloseButton.addEventListener("click", function () {
 });
 
 newPostButton.addEventListener("click", function () {
-  openModal(editProfileModal);
+  openModal(newPostModal);
 });
 
 newPostCloseButton.addEventListener("click", function () {
-  closeModal(editProfileModal);
+  closeModal(newPostModal);
 });
 
 function handleEditProfileSubmit(evt) {
@@ -70,7 +70,7 @@ function handleNewPostSubmit(evt) {
     newPostImageInput.value,
     newPostImageCaptionInput.value
   );
-  closeModal(editProfileModal);
-
-  newPostForm.addEventListener("submit", handleNewPostSubmit);
+  closeModal(newPostModal);
 }
+
+newPostForm.addEventListener("submit", handleNewPostSubmit);
