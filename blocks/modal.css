@@ -31,6 +31,57 @@
   box-sizing: border-box;
 }
 
+.modal__image-container {
+  position: relative;
+  background-color: transparent;
+  padding: 0;
+}
+
+.modal__image {
+  max-width: 80vw;
+  max-height: 80vh;
+  width: 100%;
+  margin: auto;
+  border-radius: 8px;
+  display: block;
+  object-fit: contain;
+}
+
+.modal__image-close-button {
+  padding: 0;
+  position: absolute;
+  top: 0px;
+  right: -52.5px;
+  height: 40px;
+  width: 40px;
+  background-image: url(../images/Close-White.svg);
+  background-position: center;
+  border: none;
+  background-color: transparent;
+  opacity: 1;
+}
+
+.modal__image-close-button:hover {
+  opacity: 0.4;
+}
+
+.modal__image-caption {
+  background-color: #212121;
+  margin: 0;
+  padding: 4px 8px;
+  border-radius: 8px;
+  justify-content: left;
+  color: #ffffff;
+  font-family: Poppins, Arial, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 120%;
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -40px;
+}
+
 .modal__close-button {
   position: absolute;
   width: 40px;
@@ -144,5 +195,24 @@
   .modal__submit-button {
     max-width: none;
     width: 100%;
+  }
+
+  .modal__image-container {
+    padding: 0 6px;
+  }
+
+  .modal__image {
+    max-width: unset;
+  }
+
+  .modal__image-close-button {
+    top: -48px;
+    right: 6px;
+  }
+
+  .modal__image-caption {
+    font-size: 16px;
+    bottom: -35.5px;
+    left: 6px;
   }
 }
