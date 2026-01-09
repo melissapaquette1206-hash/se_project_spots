@@ -51,7 +51,7 @@
   padding: 0;
   position: absolute;
   top: 0px;
-  right: -52.5px;
+  right: 0px;
   height: 40px;
   width: 40px;
   background-image: url(../images/Close-White.svg);
@@ -59,6 +59,7 @@
   border: none;
   background-color: transparent;
   opacity: 1;
+  cursor: pointer;
 }
 
 .modal__image-close-button:hover {
@@ -70,7 +71,6 @@
   margin: 0;
   padding: 4px 8px;
   border-radius: 8px;
-  justify-content: left;
   color: #ffffff;
   font-family: Poppins, Arial, sans-serif;
   font-weight: 500;

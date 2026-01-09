@@ -56,9 +56,6 @@ const profileDescriptionElement = document.querySelector(
   ".profile__description"
 );
 
-const newPostImageElement = document.querySelector(".card__image");
-const newPostImageCaptionElement = document.querySelector(".card__title");
-
 const previewModal = document.querySelector("#preview-image-modal");
 const previewModalCloseButton = previewModal.querySelector(
   ".modal__image-close-button"
@@ -76,7 +73,7 @@ function getCardElement(data) {
     .querySelector(".card")
     .cloneNode(true);
   const cardTitleElement = cardElement.querySelector(".card__title");
-  const cardImageElement = cardElement.querySelector(".card__Image");
+  const cardImageElement = cardElement.querySelector(".card__image");
 
   cardImageElement.src = data.link;
   cardImageElement.alt = data.name;
@@ -84,7 +81,7 @@ function getCardElement(data) {
 
   const cardLikeButtonElement = cardElement.querySelector(".card__like-button");
   cardLikeButtonElement.addEventListener("click", () => {
-    cardLikeButtonElement.classList.toggle(".card__like-button_active");
+    cardLikeButtonElement.classList.toggle("card__like-button_active");
   });
 
   const cardDeleteButtonElement = cardElement.querySelector(
@@ -92,7 +89,6 @@ function getCardElement(data) {
   );
   cardDeleteButtonElement.addEventListener("click", () => {
     cardElement.remove();
-    cardElement = null;
   });
 
   cardImageElement.addEventListener("click", () => {
@@ -153,7 +149,7 @@ function handleNewPostSubmit(evt) {
   const newCardData = { name: name, link: link };
 
   const newCard = getCardElement(newCardData);
-  cardContainer.prepend(newCard);
+  cardsList.prepend(newCard);
 
   closeModal(newPostModal);
 }
