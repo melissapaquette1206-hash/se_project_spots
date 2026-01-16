@@ -1,4 +1,13 @@
-import { disableButton } from "./validation.js";
+import { disableButton, resetValidation } from "./validation.js";
+
+const settings = {
+  formSelector: ".modal__form",
+  inputSelector: ".modal__input",
+  submitButtonSelector: ".modal__submit-button",
+  inactiveButtonClass: "modal__submit-button_disabled",
+  inputErrorClass: "modal__input_type_error",
+  errorClass: "modal__error_visible",
+};
 
 const handleEscClose = (evt) => {
   if (evt.key === "Escape") {
@@ -128,8 +137,8 @@ const closeModal = (modal) => {
 };
 
 editProfileButton.addEventListener("click", () => {
-  nameInput.value = profileName.textContent;
-  descriptionInput.value = profileDescription.textContent;
+  editProfileNameInput.value = profileNameElement.textContent;
+  editProfileDescriptionInput.value = profileDescriptionElement.textContent;
 
   resetValidation(editProfileForm, settings);
   openModal(editProfileModal);
@@ -164,7 +173,7 @@ function handleNewPostSubmit(evt) {
   const newCard = getCardElement(newCardData);
   cardsList.prepend(newCard);
   evt.target.reset();
-  disableButton(newPostSubmitButton, settings);
+  resetValidation(newPostForm, settings);
   closeModal(newPostModal);
 }
 
@@ -184,13 +193,3 @@ modals.forEach((modal) => {
     }
   });
 });
-
-const handleAddCardFormSubmit = (evt) => {
-  evt.preventDefault();
-
-  addCard(newCardNameInput.value, newCardLinkInput.value);
-
-  evt.target.reset();
-  resetValidation(newCardForm, settings);
-  closeModal(newPostModal);
-};
