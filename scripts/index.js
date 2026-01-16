@@ -1,3 +1,5 @@
+import { disableButton } from "./validation";
+
 const initialCards = [
   {
     name: "Golden Gate Bridge",
@@ -49,6 +51,9 @@ const newPostForm = newPostModal.querySelector(".modal__form");
 const newPostImageInput = newPostModal.querySelector("#card-image-input");
 const newPostImageCaptionInput = newPostModal.querySelector(
   "#card-caption-input"
+);
+const newPostSubmitButton = newPostButton.querySelector(
+  ".modal__submit-button"
 );
 
 const profileNameElement = document.querySelector(".profile__name");
@@ -142,15 +147,13 @@ editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
 function handleNewPostSubmit(evt) {
   evt.preventDefault();
-
   const name = newPostImageCaptionInput.value;
   const link = newPostImageInput.value;
-
   const newCardData = { name: name, link: link };
-
   const newCard = getCardElement(newCardData);
   cardsList.prepend(newCard);
-
+  evt.target.reset();
+  disableButton(newPostSubmitButton);
   closeModal(newPostModal);
 }
 
