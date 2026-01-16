@@ -1,22 +1,9 @@
-import { disableButton, resetValidation } from "./validation.js";
-
-const settings = {
-  formSelector: ".modal__form",
-  inputSelector: ".modal__input",
-  submitButtonSelector: ".modal__submit-button",
-  inactiveButtonClass: "modal__submit-button_disabled",
-  inputErrorClass: "modal__input_type_error",
-  errorClass: "modal__error_visible",
-};
-
-const handleEscClose = (evt) => {
-  if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal_opened");
-    if (openedModal) {
-      closeModal(openedModal);
-    }
-  }
-};
+import {
+  enableValidation,
+  settings,
+  resetValidation,
+  disableButton,
+} from "./validation.js";
 
 const initialCards = [
   {
@@ -193,3 +180,12 @@ modals.forEach((modal) => {
     }
   });
 });
+
+const handleEscClose = (evt) => {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
+};

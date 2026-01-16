@@ -2,7 +2,7 @@ export const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
   submitButtonSelector: ".modal__submit-button",
-  inactiveButtonClass: "modal__submit-button_disabled",
+  inactiveButtonClass: "modal__submit-button_inactive",
   inputErrorClass: "modal__input_type_error",
   errorClass: "modal__error_visible",
 };
@@ -97,9 +97,7 @@ export const resetValidation = (formElement, config) => {
     errorElement.classList.remove(config.errorClass);
   });
 
-  disableButton(buttonElement, config);
+  if (buttonElement) {
+    disableButton(buttonElement, config);
+  }
 };
-
-document.addEventListener("DOMContentLoaded", () => {
-  enableValidation(settings);
-});
