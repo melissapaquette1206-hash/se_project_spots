@@ -1,5 +1,14 @@
 import { disableButton } from "./validation.js";
 
+const handleEscClose = (evt) => {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".modal_opened");
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
+};
+
 const initialCards = [
   {
     name: "Golden Gate Bridge",
@@ -108,18 +117,21 @@ previewModalCloseButton.addEventListener("click", () => {
   closeModal(previewModal);
 });
 
-function openModal(modal) {
-  modal.classList.add("modal_is-open");
-  document.addEventListener("keydown", handleEscapeKey);
-}
-function closeModal(modal) {
-  modal.classList.remove("modal_is-open");
-  document.removeEventListener("keydown", handleEscapeKey);
-}
+const openModal = (modal) => {
+  modal.classList.add("modal_opened");
+  document.addEventListener("keydown", handleEscClose);
+};
 
-editProfileButton.addEventListener("click", function () {
-  editProfileNameInput.value = profileNameElement.textContent;
-  editProfileDescriptionInput.value = profileDescriptionElement.textContent;
+const closeModal = (modal) => {
+  modal.classList.remove("modal_opened");
+  document.removeEventListener("keydown", handleEscClose);
+};
+
+editProfileButton.addEventListener("click", () => {
+  nameInput.value = profileName.textContent;
+  descriptionInput.value = profileDescription.textContent;
+
+  resetValidation(editProfileForm, settings);
   openModal(editProfileModal);
 });
 
@@ -152,7 +164,7 @@ function handleNewPostSubmit(evt) {
   const newCard = getCardElement(newCardData);
   cardsList.prepend(newCard);
   evt.target.reset();
-  disableButton(newPostSubmitButton);
+  disableButton(newPostSubmitButton, settings);
   closeModal(newPostModal);
 }
 
@@ -162,3 +174,23 @@ initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
+
+const modals = document.querySelectorAll(".modal");
+
+modals.forEach((modal) => {
+  modal.addEventListener("mousedown", (evt) => {
+    if (evt.target === modal) {
+      closeModal(modal);
+    }
+  });
+});
+
+const handleAddCardFormSubmit = (evt) => {
+  evt.preventDefault();
+
+  addCard(newCardNameInput.value, newCardLinkInput.value);
+
+  evt.target.reset();
+  resetValidation(newCardForm, settings);
+  closeModal(newPostModal);
+};
