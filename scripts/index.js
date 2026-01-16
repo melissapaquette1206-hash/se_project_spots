@@ -1,4 +1,4 @@
-import { disableButton } from "./validation";
+import { disableButton } from "./validation.js";
 
 const initialCards = [
   {
@@ -52,9 +52,7 @@ const newPostImageInput = newPostModal.querySelector("#card-image-input");
 const newPostImageCaptionInput = newPostModal.querySelector(
   "#card-caption-input"
 );
-const newPostSubmitButton = newPostButton.querySelector(
-  ".modal__submit-button"
-);
+const newPostSubmitButton = newPostModal.querySelector(".modal__submit-button");
 
 const profileNameElement = document.querySelector(".profile__name");
 const profileDescriptionElement = document.querySelector(
@@ -112,10 +110,11 @@ previewModalCloseButton.addEventListener("click", () => {
 
 function openModal(modal) {
   modal.classList.add("modal_is-open");
+  document.addEventListener("keydown", handleEscapeKey);
 }
-
 function closeModal(modal) {
   modal.classList.remove("modal_is-open");
+  document.removeEventListener("keydown", handleEscapeKey);
 }
 
 editProfileButton.addEventListener("click", function () {
