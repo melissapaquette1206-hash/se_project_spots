@@ -1,9 +1,4 @@
-import {
-  enableValidation,
-  settings,
-  resetValidation,
-  disableButton,
-} from "./validation.js";
+import { disableButton } from "./validation";
 
 const initialCards = [
   {
@@ -57,7 +52,9 @@ const newPostImageInput = newPostModal.querySelector("#card-image-input");
 const newPostImageCaptionInput = newPostModal.querySelector(
   "#card-caption-input"
 );
-const newPostSubmitButton = newPostModal.querySelector(".modal__submit-button");
+const newPostSubmitButton = newPostButton.querySelector(
+  ".modal__submit-button"
+);
 
 const profileNameElement = document.querySelector(".profile__name");
 const profileDescriptionElement = document.querySelector(
@@ -113,21 +110,17 @@ previewModalCloseButton.addEventListener("click", () => {
   closeModal(previewModal);
 });
 
-const openModal = (modal) => {
-  modal.classList.add("modal_opened");
-  document.addEventListener("keydown", handleEscClose);
-};
+function openModal(modal) {
+  modal.classList.add("modal_is-open");
+}
 
-const closeModal = (modal) => {
-  modal.classList.remove("modal_opened");
-  document.removeEventListener("keydown", handleEscClose);
-};
+function closeModal(modal) {
+  modal.classList.remove("modal_is-open");
+}
 
-editProfileButton.addEventListener("click", () => {
+editProfileButton.addEventListener("click", function () {
   editProfileNameInput.value = profileNameElement.textContent;
   editProfileDescriptionInput.value = profileDescriptionElement.textContent;
-
-  resetValidation(editProfileForm, settings);
   openModal(editProfileModal);
 });
 
@@ -154,13 +147,14 @@ editProfileForm.addEventListener("submit", handleEditProfileSubmit);
 
 function handleNewPostSubmit(evt) {
   evt.preventDefault();
+
   const name = newPostImageCaptionInput.value;
   const link = newPostImageInput.value;
   const newCardData = { name: name, link: link };
   const newCard = getCardElement(newCardData);
   cardsList.prepend(newCard);
   evt.target.reset();
-  resetValidation(newPostForm, settings);
+  disableButton(newPostSubmitButton);
   closeModal(newPostModal);
 }
 
@@ -170,22 +164,3 @@ initialCards.forEach(function (item) {
   const cardElement = getCardElement(item);
   cardsList.append(cardElement);
 });
-
-const modals = document.querySelectorAll(".modal");
-
-modals.forEach((modal) => {
-  modal.addEventListener("mousedown", (evt) => {
-    if (evt.target === modal) {
-      closeModal(modal);
-    }
-  });
-});
-
-const handleEscClose = (evt) => {
-  if (evt.key === "Escape") {
-    const openedModal = document.querySelector(".modal_opened");
-    if (openedModal) {
-      closeModal(openedModal);
-    }
-  }
-};
