@@ -21,7 +21,7 @@ const hideInputError = (formElement, inputElement, config) => {
   inputElement.classList.remove(config.inputErrorClass);
 };
 
-const checkInputValidity = (formElement, inputElement) => {
+const checkInputValidity = (formElement, inputElement, config) => {
   if (!inputElement.validity.valid) {
     showInputError(
       formElement,
@@ -36,7 +36,7 @@ const checkInputValidity = (formElement, inputElement) => {
 
 const hasInvalidInput = (inputList) => {
   return inputList.some((input) => {
-    return input.validity.valid;
+    return !input.validity.valid;
   });
 };
 
