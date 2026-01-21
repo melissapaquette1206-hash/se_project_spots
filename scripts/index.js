@@ -69,9 +69,7 @@ const profileDescriptionElement = document.querySelector(
 );
 
 const previewModal = document.querySelector("#preview-image-modal");
-const previewModalCloseButton = previewModal.querySelector(
-  ".modal__image-close-button"
-);
+const previewModalCloseButton = previewModal.querySelector(".modal__close");
 const previewImageElement = previewModal.querySelector(".modal__image");
 const previewImageCaptionElement = previewModal.querySelector(
   ".modal__image-caption"
