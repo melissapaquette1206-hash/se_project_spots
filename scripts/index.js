@@ -5,6 +5,8 @@ import {
   disableButton,
 } from "./validation.js";
 
+enableValidation(settings);
+
 const initialCards = [
   {
     name: "Golden Gate Bridge",
