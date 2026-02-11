@@ -6,10 +6,8 @@
     <meta name="description" content="Spots image sharing" />
     <meta name="author" content="Melissa Paquette" />
     <meta name="keywords" content="Spots Image Sharing" />
-
     <title>Spots</title>
   </head>
-
   <body>
     <div class="page">
       <header class="header">
@@ -72,7 +70,6 @@
         <div class="modal__container">
           <button type="button" class="modal__close-button"></button>
           <h2 class="modal__title">Edit profile</h2>
-
           <form class="modal__form" id="profile-form" novalidate>
             <label for="profile-name-input" class="modal__label"> Name</label>
             <input
@@ -106,7 +103,6 @@
               class="modal__input-error"
               id="profile-description-input-error"
             ></span>
-
             <button type="submit" class="modal__submit-button">Save</button>
           </form>
         </div>
@@ -115,7 +111,6 @@
         <div class="modal__container">
           <button type="button" class="modal__close-button"></button>
           <h2 class="modal__title">New post</h2>
-
           <form class="modal__form" id="post-form" novalidate>
             <label for="card-image-input" class="modal__label">
               Image link</label
@@ -129,7 +124,6 @@
               required
             />
             <span id="card-image-input-error" class="modal__input-error"></span>
-
             <label for="card-caption-input" class="modal__label">
               Caption</label
             >
@@ -147,7 +141,6 @@
               id="card-caption-input-error"
               class="modal__input-error"
             ></span>
-
             <button type="submit" class="modal__submit-button">Save</button>
           </form>
         </div>
@@ -170,44 +163,22 @@
           >
           <input
             id="profile-avatar-input"
-            class="modal__input"
+            class="modal__input modal__input-avatar"
             type="url"
-            placeholder="Profile Picture"
+            placeholder="Paste the link to an image"
             name="profile-avatar"
             minlength="2"
-            maxlength="40"
+            maxlength="300"
             required
           />
           <span
             id="profile-avatar-input-error"
-            class="modal__input-error"
+            class="modal__input-error profile-avatar-input-error"
           ></span>
           <button class="modal__save-button" type="submit">Save</button>
         </form>
-
-        <!-- <form class="modal__form" id="avatar-form" novalidate>
-          <label for="profile-avatar-input" class="modal__label"
-            >Profile Picture</label
-          >
-          <input
-            id="profile-avatar-input"
-            class="modal__input"
-            type="url"
-            placeholder="Profile Picture"
-            name="profile-avatar"
-            minlength="2"
-            maxlength="40"
-            required
-          />
-          <span
-            id="profile-avatar-input-error"
-            class="modal__input-error"
-          ></span>
-          <button class="modal__save-button" type="submit">Save</button>
-        </form> -->
       </div>
     </div>
-
     <div class="modal" id="delete-modal">
       <div class="modal__delete-container">
         <button
