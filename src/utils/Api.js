@@ -38,7 +38,7 @@ class Api {
     }).then(this._handleServerResponse);
   }
 
-  editAvatar(avatar) {
+  editAvatar({ avatar }) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       method: "PATCH",
       headers: this._headers,
@@ -67,7 +67,7 @@ class Api {
   }
 
   changeLikeStatus(cardId, isLiked) {
-    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
       method: isLiked ? "DELETE" : "PUT",
       headers: this._headers,
     }).then(this._handleServerResponse);

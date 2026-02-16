@@ -155,8 +155,8 @@
     </div>
     <div class="modal" id="edit-avatar-modal">
       <div class="modal__container">
-        <button class="modal__close-button"></button>
-        <h3 class="modal__title">Edit Profile Avatar</h3>
+        <button type="button" class="modal__close-button"></button>
+        <h2 class="modal__title">Edit Profile Avatar</h2>
         <form class="modal__form" id="avatar-form" novalidate>
           <label for="profile-avatar-input" class="modal__label"
             >Profile Picture</label
@@ -175,13 +175,14 @@
             id="profile-avatar-input-error"
             class="modal__input-error profile-avatar-input-error"
           ></span>
-          <button class="modal__save-button" type="submit">Save</button>
+          <button class="modal__submit-button" type="submit">Save</button>
         </form>
       </div>
     </div>
     <div class="modal" id="delete-modal">
       <div class="modal__delete-container">
         <button
+          type="button"
           class="modal__close-button modal__close-button_type_delete"
         ></button>
         <h3 class="modal__delete-title">
