@@ -116,7 +116,7 @@ function getCardElement(data) {
 
   const cardLikeButtonElement = cardElement.querySelector(".card__like-button");
 
-  if (data.likes.some((user) => user._id === currentUserId)) {
+  if (data.isLiked.some((user) => user._id === currentUserId)) {
     cardLikeButtonElement.classList.add("card__like-button_active");
   }
   cardLikeButtonElement.addEventListener("click", (evt) =>
@@ -127,13 +127,16 @@ function getCardElement(data) {
     ".card__delete-button",
   );
 
-  if (data.owner._id !== currentUserId) {
-    cardDeleteButtonElement.remove();
-  } else {
-    cardDeleteButtonElement.addEventListener("click", () =>
-      handleDeleteCard(cardElement, data),
-    );
-  }
+  console.log("Delete button found:", cardDeleteButtonElement); // Add this line
+
+  // cardDeleteButtonElement.addEventListener("click", () =>
+  //   handleDeleteCard(cardElement, data),
+  // );
+
+  cardDeleteButtonElement.addEventListener("click", () => {
+    console.log("Delete button clicked!"); // Add this line
+    handleDeleteCard(cardElement, data);
+  });
 
   cardImageElement.addEventListener("click", () => handleImageClick(data));
 
@@ -153,12 +156,12 @@ function handleImageClick(data) {
 //Like Card
 function handleLike(evt, data) {
   const cardLikeButton = evt.target;
-  const isLiked = data.likes.some((user) => user._id === currentUserId);
+  const isLiked = cardLikeButton.classList.contains("card__like-button_active");
 
   api
     .changeLikeStatus(data._id, isLiked)
     .then((updatedCard) => {
-      const newIsLiked = updatedCard.likes.some(
+      const newIsLiked = updatedCard.isLiked.some(
         (user) => user._id === currentUserId,
       );
 
@@ -167,8 +170,6 @@ function handleLike(evt, data) {
       } else {
         cardLikeButton.classList.remove("card__like-button_active");
       }
-
-      data.likes = updatedCard.likes; // update local data
     })
     .catch(console.error);
 }
