@@ -56,7 +56,9 @@ const newPostSubmitButton = newPostModal.querySelector(".modal__submit-button");
 
 //Image Modal
 const previewModal = document.querySelector("#preview-image-modal");
-const previewModalCloseButton = previewModal.querySelector(".modal__close");
+const previewModalCloseButton = previewModal.querySelector(
+  ".modal__close-button",
+);
 const previewImageElement = previewModal.querySelector(".modal__image");
 const previewImageCaptionElement = previewModal.querySelector(
   ".modal__image-caption",
@@ -154,16 +156,12 @@ function handleLike(evt, data) {
   const isLiked = cardLikeButton.classList.contains("card__like-button_active");
 
   api
-    .changeLikeStatus(data._id, isLiked)
+    .changeLikeStatus(selectedCardId, isActive)
     .then((updatedCard) => {
-      const newIsLiked = updatedCard.isLiked.some(
-        (user) => user._id === currentUserId,
-      );
-
-      if (newIsLiked) {
-        cardLikeButton.classList.add("card__like-button_active");
+      if (updatedCard.isLiked) {
+        cardLikeBtn.classList.add("card__like-button_active");
       } else {
-        cardLikeButton.classList.remove("card__like-button_active");
+        cardLikeBtn.classList.remove("card__like-button_active");
       }
     })
     .catch(console.error);
@@ -286,8 +284,6 @@ function handleDeleteSubmit(evt) {
     .deleteCard(selectedCardId)
     .then(() => {
       selectedCard.remove();
-      selectedCard = null;
-      selectedCardId = null;
       closeModal(deleteModal);
     })
     .catch((err) => {
