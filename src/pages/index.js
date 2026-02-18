@@ -116,7 +116,7 @@ function getCardElement(data) {
 
   const cardLikeButtonElement = cardElement.querySelector(".card__like-button");
 
-  if (data.isLiked.some((user) => user._id === currentUserId)) {
+  if (data.isLiked) {
     cardLikeButtonElement.classList.add("card__like-button_active");
   }
   cardLikeButtonElement.addEventListener("click", (evt) =>
@@ -129,14 +129,9 @@ function getCardElement(data) {
 
   console.log("Delete button found:", cardDeleteButtonElement); // Add this line
 
-  // cardDeleteButtonElement.addEventListener("click", () =>
-  //   handleDeleteCard(cardElement, data),
-  // );
-
-  cardDeleteButtonElement.addEventListener("click", () => {
-    console.log("Delete button clicked!"); // Add this line
-    handleDeleteCard(cardElement, data);
-  });
+  cardDeleteButtonElement.addEventListener("click", () =>
+    handleDeleteCard(cardElement, data),
+  );
 
   cardImageElement.addEventListener("click", () => handleImageClick(data));
 
