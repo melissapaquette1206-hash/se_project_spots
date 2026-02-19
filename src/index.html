@@ -21,7 +21,7 @@
       <main class="content">
         <section class="profile page__section">
           <div class="profile__avatar-container">
-            <button type="button" class="profile__avatar-button">
+            <button type="button" class="profile__avatar-edit-button">
               <img
                 class="profile__edit-icon"
                 src="<%=require('./images/edit-white.svg')%>"
@@ -148,7 +148,10 @@
       </div>
       <div class="modal" id="preview-image-modal">
         <div class="modal__image-container">
-          <button type="button" class="modal__close"></button>
+          <button
+            type="button"
+            class="modal__close-button modal__close-button_type_preview"
+          ></button>
           <img src="#" alt="" class="modal__image" />
           <p class="modal__image-caption"></p>
         </div>

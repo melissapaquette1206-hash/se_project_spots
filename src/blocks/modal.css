@@ -1,5 +1,5 @@
 .modal {
-  background-color: #00000080;
+  background-color: rgba(0, 0, 0, 0.5);
   position: fixed;
   top: 0;
   right: 0;
@@ -13,8 +13,8 @@
   visibility: hidden;
   opacity: 0;
   transition:
-    visibility 0.5s linear 0.5s,
-    opacity 0.5s linear;
+    opacity 0.3s ease,
+    visibility 0.3s ease;
 }
 
 .modal_is-open {
@@ -42,14 +42,15 @@
 .modal__image {
   max-width: 80vw;
   max-height: 80vh;
-  width: 100%;
+  width: auto;
+  height: auto;
   margin: auto;
   border-radius: 8px;
   display: block;
   object-fit: contain;
 }
 
-.modal__image-close-button {
+/* .modal__image-close-button {
   padding: 0;
   position: absolute;
   top: 0px;
@@ -66,7 +67,7 @@
 
 .modal__image-close-button:hover {
   opacity: 0.4;
-}
+} */
 
 .modal__image-caption {
   background-color: #212121;
@@ -81,7 +82,7 @@
   display: block;
   position: absolute;
   left: 0;
-  bottom: -40px;
+  bottom: -32px;
   justify-content: left;
 }
 
@@ -98,13 +99,23 @@
   background-position: center;
   background-repeat: no-repeat;
   border: none;
-  border-color: transparent;
   opacity: 0.4;
   cursor: pointer;
 }
 
 .modal__close-button:hover {
   opacity: 1;
+}
+
+.modal__close-button_type_preview {
+  top: -40px;
+  right: -40px;
+  background-image: url(../images/Close-White.svg);
+  opacity: 1;
+}
+
+.modal__close-button_type_preview:hover {
+  opacity: 0.4;
 }
 
 .modal__title {
@@ -132,7 +143,6 @@
   font-size: 20px;
   line-height: 1;
   box-sizing: border-box;
-  margin-bottom: 0;
   height: 52px;
   margin: 0 0 32px;
 }
@@ -178,7 +188,6 @@
   font-size: 16px;
   line-height: 110%;
   color: #212121b2;
-  display: block;
 }
 
 .modal__submit-button {
@@ -295,14 +304,13 @@
     max-width: unset;
   }
 
-  .modal__image-close-button {
+  .modal__close-button_type_preview {
     top: -48px;
     right: 6px;
   }
-
   .modal__image-caption {
     font-size: 16px;
-    bottom: -35.5px;
+    bottom: -28px;
     left: 6px;
   }
 

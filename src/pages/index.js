@@ -65,7 +65,7 @@ const previewImageCaptionElement = previewModal.querySelector(
 );
 
 //Avatar
-const editAvatarButton = document.querySelector(".profile__avatar-button");
+const editAvatarButton = document.querySelector(".profile__avatar-edit-button");
 const editAvatarModal = document.querySelector("#edit-avatar-modal");
 const editAvatarForm = editAvatarModal.querySelector("#avatar-form");
 const saveAvatarButton = editAvatarModal.querySelector(".modal__submit-button");
@@ -156,12 +156,12 @@ function handleLike(evt, data) {
   const isLiked = cardLikeButton.classList.contains("card__like-button_active");
 
   api
-    .changeLikeStatus(selectedCardId, isActive)
+    .changeLikeStatus(data._id, isLiked)
     .then((updatedCard) => {
       if (updatedCard.isLiked) {
-        cardLikeBtn.classList.add("card__like-button_active");
+        cardLikeButton.classList.add("card__like-button_active");
       } else {
-        cardLikeBtn.classList.remove("card__like-button_active");
+        cardLikeButton.classList.remove("card__like-button_active");
       }
     })
     .catch(console.error);
@@ -278,7 +278,7 @@ function handleAvatarFormSubmit(evt) {
 function handleDeleteSubmit(evt) {
   evt.preventDefault();
   const submitButton = evt.submitter;
-  setButtonText(submitButton, true, "Deleting...");
+  setButtonText(submitButton, true, "Delete");
 
   api
     .deleteCard(selectedCardId)
