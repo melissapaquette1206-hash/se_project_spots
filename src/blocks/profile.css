@@ -1,20 +1,58 @@
 .profile {
   display: flex;
-  padding: 34px 0 20px;
+  align-items: center;
+  gap: 30px;
   border-bottom: 1px rgba(33, 33, 33, 0.4) solid;
 }
 
-.profile__avatar {
+.profile__avatar-container {
+  position: relative;
   margin-right: 20px;
+  height: 190px;
+  width: 190px;
+}
+
+.profile__avatar {
   border-radius: 8px;
   height: 190px;
   width: 190px;
+  display: block;
+}
+
+.profile__avatar-edit-button {
+  position: absolute;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  gap: 8px;
+  transition: opacity 0.2s ease;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.profile__avatar-container:hover .profile__avatar-edit-button {
+  opacity: 1;
+}
+
+.profile__avatar-edit-button::after {
+  content: "Edit Avatar";
+  color: #fff;
+  padding: 10px 12px;
+  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-weight: 500;
+  font-size: 14px;
 }
 
 .profile__column {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  justify-content: space-between;
   max-width: 420px;
 }
 
@@ -29,6 +67,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   max-width: 420px;
 }
@@ -46,6 +85,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   max-width: 420px;
 }
@@ -64,6 +104,7 @@
   gap: 8px;
   cursor: pointer;
   opacity: 0.7;
+  text-align: left;
 }
 
 .profile__edit-button:hover {
@@ -108,6 +149,27 @@
     margin: 0 0 12px;
     height: 80px;
     width: 80px;
+  }
+
+  .profile__avatar-edit-button {
+    padding: 0;
+    align-items: center;
+    justify-content: center;
+    opacity: 1;
+    border-radius: 8px;
+    gap: 0px;
+    transition: opacity 0.2s ease;
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 23px;
+    width: 23px;
+    top: 52px;
+    left: 52px;
+  }
+
+  .profile__avatar-edit-button::after {
+    content: "";
+    font-size: 0px;
+    margin-bottom: 0;
   }
 
   .profile__name {
